@@ -11,7 +11,7 @@ import base64
 from pathlib import Path
 
 @ensure_annotations
-def read_yaml(path_to_yaml: Path) -> ConfigBox:
+def read_yaml_file(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
 
     Args:
@@ -35,13 +35,17 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise e
     
 @ensure_annotations
-def create_directories(directory_paths:list, verbase=True):
-    """Create list of directories"""
+def create_directories(path_to_directories: list, verbose=True):
+    """create list of directories
 
-    for path in directory_paths:
-        os.makedirs("path", exist_ok=True)
-        if verbase:
-            logger.info(f"created directories: {path}")
+    Args:
+        path_to_directories (list): list of path of directories
+        ignore_log (bool, optional): ignore if multiple dirs is to be created. Defaults to False.
+    """
+    for path in path_to_directories:
+        os.makedirs(path, exist_ok=True)
+        if verbose:
+            logger.info(f"created directory at: {path}")
 
 
 @ensure_annotations
