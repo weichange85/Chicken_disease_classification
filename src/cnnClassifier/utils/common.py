@@ -50,6 +50,12 @@ def create_directories(path_to_directories: list, verbose=True):
 
 @ensure_annotations
 def save_json(out_filepath, data:dict):
+    """
+    args:
+        out_filepath: path to json file
+        data: data to be saved in json file
+    
+    """
     with open(out_filepath, 'r') as file:
         json.dump(data, file, indent=4)
 
